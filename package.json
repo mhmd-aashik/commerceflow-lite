@@ -28,6 +28,8 @@
     "@nestjs/core": "^12.0.1",
     "@nestjs/microservices": "^12.5.1",
     "@nestjs/platform-express": "^12.0.1",
+    "drizzle-orm": "^0.45.4",
+    "postgres": "^4.1.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
   },
@@ -41,6 +43,7 @@
     "@types/node": "^24.0.0",
     "@types/supertest": "^7.0.0",
     "@vitest/coverage-v8": "^4.1.2",
+    "drizzle-kit": "^0.31.11",
     "fork-ts-checker-webpack-plugin": "^9.1.0",
     "oxlint": "^1.58.0",
     "oxlint-tsgolint": "^7.0.2001",
