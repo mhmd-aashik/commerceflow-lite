@@ -1,4 +1,4 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { OrderService } from './order.service.js';
 
 @Controller('orders')
@@ -11,5 +11,10 @@ export class OrderController {
     @Query('quantity') quantity: string,
   ) {
     return this.orderService.checkInventory(productId, Number(quantity));
+  }
+
+  @Post('reserve')
+  async reserveStock(@Body() body: { productId: string; quantity: number }) {
+    return this.orderService.reserveInventory(body.productId, body.quantity);
   }
 }
