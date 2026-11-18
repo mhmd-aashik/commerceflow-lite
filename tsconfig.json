@@ -32,6 +32,9 @@
       "path": "./apps/inventory/tsconfig.app.json"
     },
     {
+      "path": "./apps/order/tsconfig.app.json"
+    },
+    {
       "path": "./tsconfig.spec.json"
     }
   ]
