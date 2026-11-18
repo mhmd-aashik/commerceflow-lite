@@ -28,4 +28,33 @@ export class InventoryController {
       remainingStock: currentStock,
     };
   }
+
+  @GrpcMethod('InventoryService', 'ReserveStock')
+  reserveStock(data: { productId: string; quantity: number }) {
+    const currentStock = this.stock[data.productId] ?? 0;
+
+    if (data.quantity <= 0) {
+      return {
+        success: false,
+        remainingStock: currentStock,
+        message: 'Invalid quantity',
+      };
+    }
+
+    if (currentStock < data.quantity) {
+      return {
+        success: false,
+        remainingStock: currentStock,
+        message: 'Insufficient stock',
+      };
+    }
+
+    this.stock[data.productId] = currentStock - data.quantity;
+
+    return {
+      success: true,
+      remainingStock: this.stock[data.productId],
+      message: 'Stock reserved successfully',
+    };
+  }
 }
