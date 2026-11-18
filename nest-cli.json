@@ -1,8 +1,32 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src",
+  "sourceRoot": "apps/commerceflow-lite/src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "builder": "rspack",
+    "tsConfigPath": "apps/commerceflow-lite/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/commerceflow-lite",
+  "projects": {
+    "commerceflow-lite": {
+      "type": "application",
+      "root": "apps/commerceflow-lite",
+      "entryFile": "main",
+      "sourceRoot": "apps/commerceflow-lite/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/commerceflow-lite/tsconfig.app.json"
+      }
+    },
+    "inventory": {
+      "type": "application",
+      "root": "apps/inventory",
+      "entryFile": "main",
+      "sourceRoot": "apps/inventory/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/inventory/tsconfig.app.json"
+      }
+    }
   }
 }

@@ -18,6 +18,21 @@
     "skipLibCheck": true,
     "strict": true,
     "strictPropertyInitialization": false,
-    "types": ["vitest/globals", "node"]
-  }
+    "types": [
+      "vitest/globals",
+      "node"
+    ]
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./apps/commerceflow-lite/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/inventory/tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }
