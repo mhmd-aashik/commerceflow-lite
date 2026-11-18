@@ -14,6 +14,12 @@ interface CheckStockResponse {
 
 interface InventoryGrpcService {
   checkStock(data: CheckStockRequest): Observable<CheckStockResponse>;
+
+  reserveStock(data: { productId: string; quantity: number }): Observable<{
+    success: boolean;
+    remainingStock: number;
+    message: string;
+  }>;
 }
 
 @Injectable()
@@ -36,6 +42,15 @@ export class OrderService implements OnModuleInit {
   ): Promise<CheckStockResponse> {
     return firstValueFrom(
       this.inventoryService.checkStock({
+        productId,
+        quantity,
+      }),
+    );
+  }
+
+  async reserveInventory(productId: string, quantity: number) {
+    return firstValueFrom(
+      this.inventoryService.reserveStock({
         productId,
         quantity,
       }),
