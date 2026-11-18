@@ -10,15 +10,6 @@
   "monorepo": true,
   "root": "apps/commerceflow-lite",
   "projects": {
-    "commerceflow-lite": {
-      "type": "application",
-      "root": "apps/commerceflow-lite",
-      "entryFile": "main",
-      "sourceRoot": "apps/commerceflow-lite/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/commerceflow-lite/tsconfig.app.json"
-      }
-    },
     "inventory": {
       "type": "application",
       "root": "apps/inventory",
