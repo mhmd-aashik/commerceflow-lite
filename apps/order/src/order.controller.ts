@@ -17,4 +17,9 @@ export class OrderController {
   async reserveStock(@Body() body: { productId: string; quantity: number }) {
     return this.orderService.reserveInventory(body.productId, body.quantity);
   }
+
+  @Post('release')
+  releaseStock(@Body() body: { productId: string; quantity: number }) {
+    return this.orderService.releaseInventory(body.productId, body.quantity);
+  }
 }
