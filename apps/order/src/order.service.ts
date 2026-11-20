@@ -20,6 +20,12 @@ interface InventoryGrpcService {
     remainingStock: number;
     message: string;
   }>;
+
+  releaseStock(data: { productId: string; quantity: number }): Observable<{
+    success: boolean;
+    remainingStock: number;
+    message: string;
+  }>;
 }
 
 @Injectable()
@@ -54,6 +60,12 @@ export class OrderService implements OnModuleInit {
         productId,
         quantity,
       }),
+    );
+  }
+
+  async releaseInventory(productId: string, quantity: number) {
+    return firstValueFrom(
+      this.inventoryService.releaseStock({ productId, quantity }),
     );
   }
 }

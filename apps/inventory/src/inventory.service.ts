@@ -56,4 +56,38 @@ export class InventoryService {
       remainingStock: currentStock,
     };
   }
+
+  async releaseStock(productId: string, quantity: number) {
+    if (!Number.isInteger(quantity) || quantity <= 0) {
+      return {
+        success: false,
+        remainingStock: 0,
+        message: 'Invalid quantity',
+      };
+    }
+
+    const result = await db
+      .update(inventory)
+      .set({
+        stock: sql`${inventory.stock} + ${quantity}`,
+      })
+      .where(eq(inventory.productId, productId))
+      .returning({
+        remainingStock: inventory.stock,
+      });
+
+    if (result.length === 0) {
+      return {
+        success: false,
+        remainingStock: 0,
+        message: 'Product not found',
+      };
+    }
+
+    return {
+      success: true,
+      remainingStock: result[0].remainingStock,
+      message: 'Stock released successfully',
+    };
+  }
 }
